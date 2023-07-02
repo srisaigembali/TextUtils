@@ -44,7 +44,7 @@ const About = () => {
               aria-controls="collapseOne"
               style={myStyle}
             >
-              Accordion Item #1
+              About The App
             </button>
           </h2>
           <div
@@ -53,14 +53,10 @@ const About = () => {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body" style={myStyle}>
-              <strong>This is the first item's accordion body.</strong> It is
-              shown by default, until the collapse plugin adds the appropriate
-              classNamees that we use to style each element. These classNamees
-              control the overall appearance, as well as the showing and hiding
-              via CSS transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+              The Text Utils app is a powerful tool designed to assist users in
+              manipulating and processing text-based data efficiently. It offers
+              a wide range of features and functionalities to simplify various
+              text-related tasks.{' '}
             </div>
           </div>
         </div>
@@ -75,7 +71,7 @@ const About = () => {
               aria-controls="collapseTwo"
               style={myStyle}
             >
-              Accordion Item #2
+              About Me
             </button>
           </h2>
           <div
@@ -84,14 +80,7 @@ const About = () => {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body" style={myStyle}>
-              <strong>This is the second item's accordion body.</strong> It is
-              hidden by default, until the collapse plugin adds the appropriate
-              classNamees that we use to style each element. These classNamees
-              control the overall appearance, as well as the showing and hiding
-              via CSS transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+              Full Stack Developer
             </div>
           </div>
         </div>
@@ -106,7 +95,7 @@ const About = () => {
               aria-controls="collapseThree"
               style={myStyle}
             >
-              Accordion Item #3
+              My profile
             </button>
           </h2>
           <div
@@ -115,14 +104,10 @@ const About = () => {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body" style={myStyle}>
-              <strong>This is the third item's accordion body.</strong> It is
-              hidden by default, until the collapse plugin adds the appropriate
-              classNamees that we use to style each element. These classNamees
-              control the overall appearance, as well as the showing and hiding
-              via CSS transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+              <a href="https://srisaigembali.github.io/portfolio/">
+                My profile
+              </a>{' '}
+              Click on the link to know more about me
             </div>
           </div>
         </div>
