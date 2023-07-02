@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import Alert from './components/Alert';
 import { Route, Routes } from 'react-router-dom';
+import Home from './components/Home';
 
 function App() {
   const [mode, setMode] = useState('light');
@@ -19,41 +20,39 @@ function App() {
     }, 1500);
   };
 
-  const removeBodyClasses = () => {
-    document.body.classList.remove('bg-light');
-    document.body.classList.remove('bg-dark');
-    document.body.classList.remove('bg-primary');
-    document.body.classList.remove('bg-success');
-    document.body.classList.remove('bg-warning');
-    document.body.classList.remove('bg-danger');
-  };
+  // const removeBodyClasses = () => {
+  //   document.body.classList.remove('bg-light');
+  //   document.body.classList.remove('bg-dark');
+  //   document.body.classList.remove('bg-primary');
+  //   document.body.classList.remove('bg-success');
+  //   document.body.classList.remove('bg-warning');
+  //   document.body.classList.remove('bg-danger');
+  // };
 
-  const toggleMode = (cls) => {
-    removeBodyClasses();
-    document.body.classList.add('bg-' + cls);
-    // if (mode === 'dark') {
-    //   setMode('light');
-    //   document.body.style.backgroundColor = 'white';
-    //   showAlert('Light Mode is Enabled', 'success');
-    // } else {
-    //   setMode('dark');
-    //   document.body.style.backgroundColor = '#042743';
-    //   showAlert('Dark Mode is Enabled', 'success');
-    // }
-    if (cls === 'light') {
-      document.body.classList.remove('bg-light');
+  const toggleMode = () => {
+    // removeBodyClasses();
+    // document.body.classList.add('bg-' + cls);
+    if (mode === 'dark') {
       setMode('light');
       document.body.style.backgroundColor = 'white';
       showAlert('Light Mode is Enabled', 'success');
-      document.title = 'TextUtils - Light Mode';
-    }
-    if (cls === 'dark') {
-      document.body.classList.remove('bg-dark');
+    } else {
       setMode('dark');
       document.body.style.backgroundColor = '#042743';
-      showAlert('dark Mode is Enabled', 'success');
-      document.title = 'TextUtils - Dark Mode';
+      showAlert('Dark Mode is Enabled', 'success');
     }
+    // if (cls === 'light') {
+    //   document.body.classList.remove('bg-light');
+    //   setMode('light');
+    //   document.body.style.backgroundColor = 'white';
+    //   showAlert('Light Mode is Enabled', 'success');
+    // }
+    // if (cls === 'dark') {
+    //   document.body.classList.remove('bg-dark');
+    //   setMode('dark');
+    //   document.body.style.backgroundColor = '#042743';
+    //   showAlert('dark Mode is Enabled', 'success');
+    // }
   };
 
   return (
@@ -61,9 +60,11 @@ function App() {
       <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
       <Alert alert={alert} />
       <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/TextUtils" element={<Home />} />
         <Route
           exact
-          path="/"
+          path="/home"
           element={
             <TextForm
               heading="Enter Your Text To Analyse Below"
@@ -72,7 +73,7 @@ function App() {
             />
           }
         />
-        <Route exact path="/about" element={<About />} />
+        <Route exact path="/about" element={<About mode={mode} />} />
       </Routes>
     </>
   );

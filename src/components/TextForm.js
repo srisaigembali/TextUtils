@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
 const TextForm = (props) => {
+  document.title = 'TextUtils - Home';
+
   const [text, setText] = useState('Enter your text here');
 
   const handleOnChange = (event) => {
@@ -12,14 +14,14 @@ const TextForm = (props) => {
     let newText = text.toUpperCase();
     setText(newText);
     localStorage.setItem('textutil', newText);
-    props.showAlert('Converted to Uppercase!', 'success');
+    text !== '' && props.showAlert('Converted to Uppercase!', 'success');
   };
 
   const handleLowClick = () => {
     let newText = text.toLowerCase();
     setText(newText);
     localStorage.setItem('textutil', newText);
-    props.showAlert('Converted to Lowercase!', 'success');
+    text !== '' && props.showAlert('Converted to Lowercase!', 'success');
   };
 
   const handleCapitalize = () => {
@@ -30,7 +32,7 @@ const TextForm = (props) => {
     let newText = newWords.join(' ');
     setText(newText);
     localStorage.setItem('textutil', newText);
-    props.showAlert('Capitalized successfully!', 'success');
+    text !== '' && props.showAlert('Capitalized successfully!', 'success');
   };
 
   const handleToggleCase = () => {
@@ -53,7 +55,7 @@ const TextForm = (props) => {
 
     setText(newText);
     localStorage.setItem('textutil', newText);
-    props.showAlert('Case Toggled!', 'success');
+    text !== '' && props.showAlert('Case Toggled!', 'success');
   };
 
   const handleReplace = () => {
@@ -62,21 +64,22 @@ const TextForm = (props) => {
     let newText = text.replaceAll(existing_text, replaced_text);
     setText(newText);
     localStorage.setItem('textutil', newText);
-    props.showAlert(
-      `${existing_text} is replaced with ${replaced_text}`,
-      'success'
-    );
+    text !== '' &&
+      props.showAlert(
+        `${existing_text} is replaced with ${replaced_text}`,
+        'success'
+      );
   };
 
   const handleClearClick = () => {
     setText('');
-    props.showAlert('Text Cleared!', 'success');
+    text !== '' && props.showAlert('Text Cleared!', 'success');
   };
 
   const undo = () => {
     let itm = localStorage.getItem('textutil');
     setText(itm);
-    props.showAlert('Text Retrieved!', 'success');
+    text !== '' && props.showAlert('Text Retrieved!', 'success');
   };
 
   const speak = () => {
@@ -89,21 +92,21 @@ const TextForm = (props) => {
     let textBox = document.getElementById('myBox');
     textBox.select();
     navigator.clipboard.writeText(textBox.value);
-    props.showAlert('Text copied to clipboard!', 'success');
+    text !== '' && props.showAlert('Text copied to clipboard!', 'success');
   };
 
   const handleExtraSpaces = () => {
     let newText = text.split(/[ ]+/).join(' ');
     setText(newText);
     localStorage.setItem('textutil', newText);
-    props.showAlert('Extra Spaces removed!', 'success');
+    text !== '' && props.showAlert('Extra Spaces removed!', 'success');
   };
 
   return (
     <>
       <div
         className="container my-3"
-        style={{ color: props.mode === 'light' ? 'black' : 'white' }}
+        style={{ color: props.mode === 'light' ? '#042743' : 'white' }}
       >
         <h1>{props.heading}</h1>
         <div className="mb-3">
@@ -116,14 +119,14 @@ const TextForm = (props) => {
             style={{
               backgroundColor:
                 props.mode === 'dark' ? 'rgb(108 170 232)' : 'white',
-              color: props.mode === 'light' ? 'black' : 'white',
+              color: props.mode === 'light' ? '#042743' : 'white',
             }}
           ></textarea>
         </div>
         <button
           className={`btn btn-outline-${
             props.mode === 'light' ? 'dark' : 'light'
-          }`}
+          } mx-2 my-1`}
           onClick={handleUpClick}
         >
           Uppercase
@@ -131,7 +134,7 @@ const TextForm = (props) => {
         <button
           className={`btn btn-outline-${
             props.mode === 'light' ? 'dark' : 'light'
-          } mx-2`}
+          } mx-2 my-1`}
           onClick={handleLowClick}
         >
           Lowercase
@@ -139,7 +142,7 @@ const TextForm = (props) => {
         <button
           className={`btn btn-outline-${
             props.mode === 'light' ? 'dark' : 'light'
-          } mx-2`}
+          } mx-2 my-1`}
           onClick={handleCapitalize}
         >
           Capitalize
@@ -147,7 +150,7 @@ const TextForm = (props) => {
         <button
           className={`btn btn-outline-${
             props.mode === 'light' ? 'dark' : 'light'
-          } mx-2`}
+          } mx-2 my-1`}
           onClick={handleToggleCase}
         >
           Toggle Case
@@ -155,7 +158,7 @@ const TextForm = (props) => {
         <button
           className={`btn btn-outline-${
             props.mode === 'light' ? 'dark' : 'light'
-          } mx-2`}
+          } mx-2 my-1`}
           onClick={handleReplace}
         >
           Replace
@@ -171,7 +174,7 @@ const TextForm = (props) => {
         <button
           className={`btn btn-outline-${
             props.mode === 'light' ? 'dark' : 'light'
-          } mx-2`}
+          } mx-2 my-1`}
           onClick={undo}
         >
           Undo
@@ -180,7 +183,7 @@ const TextForm = (props) => {
           onClick={speak}
           className={`btn btn-outline-${
             props.mode === 'light' ? 'dark' : 'light'
-          } mx-2`}
+          } mx-2 my-1`}
         >
           Speak
         </button>
@@ -188,7 +191,7 @@ const TextForm = (props) => {
           onClick={handleCopy}
           className={`btn btn-outline-${
             props.mode === 'light' ? 'dark' : 'light'
-          } mx-2`}
+          } mx-2 my-1`}
         >
           Copy
         </button>
@@ -196,14 +199,14 @@ const TextForm = (props) => {
           onClick={handleExtraSpaces}
           className={`btn btn-outline-${
             props.mode === 'light' ? 'dark' : 'light'
-          } mx-2`}
+          } mx-2 my-1`}
         >
           Remove Extra Spaces
         </button>
       </div>
       <div
         className="container my-3"
-        style={{ color: props.mode === 'light' ? 'black' : 'white' }}
+        style={{ color: props.mode === 'light' ? '#042743' : 'white' }}
       >
         <h2>Your Text Summary</h2>
         <p>
@@ -230,7 +233,7 @@ const TextForm = (props) => {
       </div>
       <div
         className="container my-3"
-        style={{ color: props.mode === 'light' ? 'black' : 'white' }}
+        style={{ color: props.mode === 'light' ? '#042743' : 'white' }}
       >
         <h2>Preview</h2>
         <p>{text.length > 0 ? text : 'Enter some text to preview it here.'}</p>

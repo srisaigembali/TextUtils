@@ -26,7 +26,11 @@ const Navbar = (props) => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
+                <Link
+                  className="nav-link active"
+                  aria-current="page"
+                  to="/home"
+                >
                   Home
                 </Link>
               </li>
@@ -36,7 +40,7 @@ const Navbar = (props) => {
                 </Link>
               </li>
             </ul>
-            <div className="d-flex">
+            {/* <div className="d-flex">
               <div
                 className="bg-primary rounded mx-2"
                 style={{ height: '20px', width: '20px', cursor: 'pointer' }}
@@ -79,8 +83,8 @@ const Navbar = (props) => {
                   props.toggleMode('dark');
                 }}
               ></div>
-            </div>
-            {/* <div
+            </div> */}
+            <div
               className={`form-check form-switch text-${
                 props.mode === 'light' ? 'dark' : 'light'
               } ms-3`}
@@ -100,7 +104,7 @@ const Navbar = (props) => {
               >
                 Toggle mode
               </label>
-            </div> */}
+            </div>
           </div>
         </div>
       </nav>

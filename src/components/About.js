@@ -1,37 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const About = () => {
-  let dark = {
+const About = (props) => {
+  document.title = 'TextUtils - About';
+
+  const light = {
+    color: '#042743',
+    backgroundColor: 'white',
+  };
+
+  const dark = {
     color: 'white',
-    backgroundColor: 'black',
-    border: '1px solid white',
-  };
-
-  let light = {
-    color: 'black',
-    backgroundColor: 'white',
-  };
-
-  const [myStyle, setMyStyle] = useState({
-    color: 'black',
-    backgroundColor: 'white',
-  });
-
-  const [btnText, setBtnText] = useState('Enable Dark Mode');
-
-  const handleMode = () => {
-    if (myStyle.color === 'black') {
-      setMyStyle(dark);
-      setBtnText('Enable Light Mode');
-    } else {
-      setMyStyle(light);
-      setBtnText('Enable Dark Mode');
-    }
+    backgroundColor: '#042743',
   };
 
   return (
-    <div className="container my-3" style={myStyle}>
-      <h1 className="pt-3">About Us</h1>
+    <div className="container my-3 p-3">
+      <h1 style={props.mode === 'light' ? light : dark}>About Us</h1>
       <div className="accordion" id="accordionExample">
         <div className="accordion-item">
           <h2 className="accordion-header">
@@ -42,9 +26,12 @@ const About = () => {
               data-bs-target="#collapseOne"
               aria-expanded="true"
               aria-controls="collapseOne"
-              style={myStyle}
+              style={{
+                backgroundColor:
+                  props.mode === 'dark' ? 'rgb(108 170 232)' : 'white',
+              }}
             >
-              About The App
+              <strong>Analyse the text</strong>
             </button>
           </h2>
           <div
@@ -52,7 +39,10 @@ const About = () => {
             className="accordion-collapse collapse show"
             data-bs-parent="#accordionExample"
           >
-            <div className="accordion-body" style={myStyle}>
+            <div
+              className="accordion-body"
+              style={props.mode === 'light' ? light : dark}
+            >
               The Text Utils app is a powerful tool designed to assist users in
               manipulating and processing text-based data efficiently. It offers
               a wide range of features and functionalities to simplify various
@@ -69,9 +59,12 @@ const About = () => {
               data-bs-target="#collapseTwo"
               aria-expanded="false"
               aria-controls="collapseTwo"
-              style={myStyle}
+              style={{
+                backgroundColor:
+                  props.mode === 'dark' ? 'rgb(108 170 232)' : 'white',
+              }}
             >
-              About Me
+              <strong>Free to use</strong>
             </button>
           </h2>
           <div
@@ -79,8 +72,11 @@ const About = () => {
             className="accordion-collapse collapse"
             data-bs-parent="#accordionExample"
           >
-            <div className="accordion-body" style={myStyle}>
-              Full Stack Developer
+            <div
+              className="accordion-body"
+              style={props.mode === 'light' ? light : dark}
+            >
+              TextUtils app is free to use made using react js.
             </div>
           </div>
         </div>
@@ -93,9 +89,12 @@ const About = () => {
               data-bs-target="#collapseThree"
               aria-expanded="false"
               aria-controls="collapseThree"
-              style={myStyle}
+              style={{
+                backgroundColor:
+                  props.mode === 'dark' ? 'rgb(108 170 232)' : 'white',
+              }}
             >
-              My profile
+              <strong>My profile</strong>
             </button>
           </h2>
           <div
@@ -103,7 +102,10 @@ const About = () => {
             className="accordion-collapse collapse"
             data-bs-parent="#accordionExample"
           >
-            <div className="accordion-body" style={myStyle}>
+            <div
+              className="accordion-body"
+              style={props.mode === 'light' ? light : dark}
+            >
               <a href="https://srisaigembali.github.io/portfolio/">
                 My profile
               </a>{' '}
@@ -111,11 +113,6 @@ const About = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="my-3">
-        <button className="btn btn-primary" onClick={handleMode}>
-          {btnText}
-        </button>
       </div>
     </div>
   );
