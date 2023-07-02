@@ -89,9 +89,7 @@ const TextForm = (props) => {
   };
 
   const handleCopy = () => {
-    let textBox = document.getElementById('myBox');
-    textBox.select();
-    navigator.clipboard.writeText(textBox.value);
+    navigator.clipboard.writeText(text);
     text !== '' && props.showAlert('Text copied to clipboard!', 'success');
   };
 
@@ -210,8 +208,8 @@ const TextForm = (props) => {
       >
         <h2>Your Text Summary</h2>
         <p>
-          <b>{text.trim() === '' ? 0 : text.trim().split(' ').length}</b> Words
-          and <b>{text.length}</b> Characters
+          <b>{text.trim() === '' ? 0 : text.trim().split(/\s+/).length}</b>{' '}
+          Words and <b>{text.length}</b> Characters
         </p>
         <p>
           <b>
@@ -226,7 +224,7 @@ const TextForm = (props) => {
         </p>
         <p>
           <b>
-            {0.008 * (text.trim() === '' ? 0 : text.trim().split(' ').length)}
+            {0.008 * (text.trim() === '' ? 0 : text.trim().split(/\s+/).length)}
           </b>{' '}
           Minutes to read
         </p>
